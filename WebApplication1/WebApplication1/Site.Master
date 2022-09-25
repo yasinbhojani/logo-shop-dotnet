@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .profile 
+        {
+            border-radius: 50%;
+        }
+        .card
+        {
+            box-shadow: 3px 3px 10px 3px #ccc;
+            margin: 30px;
+            padding: 15px;
+            border-radius: 14px;
+        }
+        .btn
+        {
+            box-shadow: 1px 1px 5px 1px #ccc;
+            background-color: teal;
+            color: White;
+            border-radius: 4px;
+            border: none;
+            padding: 5px 10px;
+            transition: 0.3s all;
+        }
+        .btn:hover
+        {
+            cursor: pointer;
+            background-color: #009c9d;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    LOGO
+                    Shopping Website
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:Label ID="Label1" runat="server"></asp:Label>
+                <asp:ImageButton ID="ImageButton1" runat="server" Height="46px"
+                    PostBackUrl="~/EditProfile.aspx" Style="margin-left: 0px" ToolTip="change profile image"
+                    Width="46px" class="profile"/>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Log Out" />
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home" />
+                        <asp:MenuItem Text="About" />
+                        <asp:MenuItem Text="Gallery" Value="Gallery" NavigateUrl="~/Gallery.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Orders" Value="Orders">
+                            <asp:MenuItem Text="Completed" Value="Completed"></asp:MenuItem>
+                            <asp:MenuItem Text="Pending" Value="Pending"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Feedback" Value="Feedback"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/mycart.aspx" Text="My Cart" Value="My Cart">
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
